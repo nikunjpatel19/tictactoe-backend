@@ -3,6 +3,7 @@
 This is the **backend server** for a real-time two-player Tic Tac Toe game built using:
 - 🖥️ **Ktor (Kotlin)** backend with WebSockets
 - 🧠 **Kotlin Serialization** & **StateFlow** for reactive state management
+- 🚀 Deployed on a VPS with port forwarding
 
 It handles all **game logic, player turns, win/draw detection, and broadcasting** of game state to connected clients.  
 The backend is designed to work with any WebSocket-compatible frontend (Android, web, desktop).
@@ -41,10 +42,13 @@ The backend is designed to work with any WebSocket-compatible frontend (Android,
     - Broadcasts the full `GameState` JSON to both players after every move
     - Resets the board after a short delay when the game ends
 
+
 - **Communication format**:
+
   ```txt
   MakeTurn#{"x":0,"y":2}
   ```
+
 - **Example game state broadcast**:
   ```json
   {
@@ -65,15 +69,21 @@ The backend is designed to work with any WebSocket-compatible frontend (Android,
 ├── src/
 │   ├── main/
 │   │   ├── kotlin/
-│   │   │   ├── Application.kt       # Ktor setup & plugins
-│   │   │   ├── SocketRoute.kt       # WebSocket route logic
-│   │   │   ├── models/              # Data classes (GameState, MakeTurn)
-│   │   │   └── TicTacToeGame.kt     # Core game logic
+│   │   │   ├── Application.kt           # Ktor setup & plugin installation
+│   │   │   ├── SocketRoute.kt           # WebSocket route logic
+│   │   │   ├── models/                  # Game data models
+│   │   │   │   ├── GameState.kt         # @Serializable game state
+│   │   │   │   ├── MakeTurn.kt          # @Serializable move action
+│   │   │   │   └── TicTacToeGame.kt     # Core game logic & board handling
+│   │   │   ├── plugins/                 # Ktor plugins
+│   │   │   │   ├── Monitoring.kt        # Call logging
+│   │   │   │   ├── Routing.kt           # Route registration
+│   │   │   │   ├── Serialization.kt     # JSON config
+│   │   │   │   └── Sockets.kt           # WebSockets setup
 │   │   └── resources/
-│   │       └── application.conf     # Server config (port, env)
+│   │       └── application.conf         # Server config (port, env)
 └── README.md
 ```
-
 ---
 
 ## 🚀 Getting Started
@@ -116,8 +126,7 @@ The backend is designed to work with any WebSocket-compatible frontend (Android,
 
 ## 🔐 Security Note
 
-* No authentication is implemented — this is intended as a learning/demo project.
-* For production, add player authentication (tokens, sessions) to prevent misuse.
+* No authentication is implemented yet — it is intended in future updates.
 
 ---
 
@@ -133,11 +142,28 @@ The backend is designed to work with any WebSocket-compatible frontend (Android,
 
 ## 📚 Credits
 
-* Original tutorial by **Philipp Lackner**: [YouTube Link](https://www.youtube.com/watch?v=0pJQY6j5U8M) *(replace if different)*
-* Ktor & Kotlin official documentation
+* [Ktor Official Documentation](https://ktor.io/)
 
 ---
 
-## 🗓️ Last Updated
+## MIT License
 
-August 08, 2025
+Copyright (c) 2025 Nikunj Patel
+
+Permission is hereby granted, free of charge, to any person obtaining a copy  
+of this software and associated documentation files (the "Software"), to deal  
+in the Software without restriction, including without limitation the rights  
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell  
+copies of the Software, and to permit persons to whom the Software is  
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all  
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR  
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,  
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE  
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER  
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,  
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE  
+SOFTWARE.
