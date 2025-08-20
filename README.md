@@ -59,31 +59,7 @@ The backend is designed to work with any WebSocket-compatible frontend (Android,
     "connectedPlayers": ["X","O"]
   }
   ```
-
----
-
-## 📂 Folder Structure
-
-```
-.
-├── src/
-│   ├── main/
-│   │   ├── kotlin/
-│   │   │   ├── Application.kt           # Ktor setup & plugin installation
-│   │   │   ├── SocketRoute.kt           # WebSocket route logic
-│   │   │   ├── models/                  # Game data models
-│   │   │   │   ├── GameState.kt         # @Serializable game state
-│   │   │   │   ├── MakeTurn.kt          # @Serializable move action
-│   │   │   │   └── TicTacToeGame.kt     # Core game logic & board handling
-│   │   │   ├── plugins/                 # Ktor plugins
-│   │   │   │   ├── Monitoring.kt        # Call logging
-│   │   │   │   ├── Routing.kt           # Route registration
-│   │   │   │   ├── Serialization.kt     # JSON config
-│   │   │   │   └── Sockets.kt           # WebSockets setup
-│   │   └── resources/
-│   │       └── application.conf         # Server config (port, env)
-└── README.md
-```
+  
 ---
 
 ## 🚀 Getting Started
