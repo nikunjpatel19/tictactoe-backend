@@ -34,3 +34,12 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Devcontainer / Codespaces ###
+.devcontainer/*.log
+.devcontainer/*.env
+.devcontainer/*.local
+
+### OS-specific ###
+.DS_Store
+Thumbs.db
