@@ -1,0 +1,9 @@
+{
+  "name": "Ktor Server",
+  "image": "mcr.microsoft.com/devcontainers/java:1-17-bullseye",
+  "forwardPorts": [8080],
+  "portsAttributes": {
+    "8080": { "label": "Ktor", "onAutoForward": "openBrowser" }
+  },
+  "postCreateCommand": "./gradlew --no-daemon build"
+}
